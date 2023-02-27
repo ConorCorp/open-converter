@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 
 import { ThemeProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
-import theme from "/src/presentation/theme";
-import App from "/src/presentation/app";
+import theme from "src/presentation/theme";
+import App from "src/presentation/app";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

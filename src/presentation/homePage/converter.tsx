@@ -11,7 +11,7 @@ import {
   Typography,
   Checkbox,
 } from "@mui/material";
-import { FileType, getTextBoxPlaceholders } from "/src/services/converter";
+import { FileType, getTextBoxPlaceholders } from "src/services/converter";
 import { useState } from "react";
 
 const Converter = () => {
