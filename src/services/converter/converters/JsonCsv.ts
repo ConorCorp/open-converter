@@ -1,4 +1,4 @@
-import { Converter } from "/src/services/converter";
+import { Converter } from "src/services/converter";
 
 const inputPlaceholder = `{
   "Level1Key": {

@@ -12,6 +12,10 @@ enum FileType {
   CSV = "CSV",
 }
 
+const ConverterUrls = {
+  JsonCsv: "JsonCsv",
+};
+
 const conversionMap: { [key: string]: Converter } = {
   JSON_CSV: JsonCsv,
 };
@@ -26,4 +30,4 @@ const getTextBoxPlaceholders = (input: FileType, output: FileType) => {
   }
 };
 
-export { FileType, getTextBoxPlaceholders };
+export { FileType, ConverterUrls, getTextBoxPlaceholders };
