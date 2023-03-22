@@ -1,5 +1,5 @@
 import { TextField, Grid, Box, Typography } from "@mui/material";
-import { FileType, getTextBoxPlaceholders } from "src/services/converter";
+import { ConverterConfig } from "src/services/converters/types";
 import { useState } from "react";
 import FileConfig, { FileConfigInput } from "./fileConfig";
 import { useSearchParams } from "react-router-dom";
@@ -9,12 +9,17 @@ const getBooleanConfig = () => {
   return searchParams.get("input_1") === "true";
 };
 
-const Converter = ({
-  inputFile,
-  outputFile,
+/**
+ * UI Element with side by side coverters
+ * @param input ConverterConfig to convert
+ * @param output ConverterConfig to convert into
+ */
+const Converters = ({
+  input,
+  output,
 }: {
-  inputFile: FileType;
-  outputFile: FileType;
+  input: ConverterConfig;
+  output: ConverterConfig;
 }) => {
   const [inputConfig, setInputConfig] = useState<any>({
     input1: getBooleanConfig(),
@@ -73,28 +78,28 @@ const Converter = ({
           <FileConfig inputs={getFileConfigs()} />
           <TextField
             id="outlined-multiline-static"
-            label={`${inputFile} Input`}
+            label={`${input.fileType} Input`}
             multiline
             rows={12}
             fullWidth
             InputLabelProps={{
               shrink: true,
             }}
-            placeholder={getTextBoxPlaceholders(inputFile, outputFile).input}
+            placeholder={input.textBoxPlaceholder}
             sx={{ marginTop: 2 }}
           />
         </Grid>
         <Grid item xs={2} sm={1}>
           <TextField
             id="outlined-multiline-static"
-            label={`${outputFile} Output`}
+            label={`${output.fileType} Output`}
             multiline
             rows={12}
             fullWidth
             InputLabelProps={{
               shrink: true,
             }}
-            placeholder={getTextBoxPlaceholders(inputFile, outputFile).output}
+            placeholder={output.textBoxPlaceholder}
           />
         </Grid>
         <Grid item>
@@ -107,4 +112,4 @@ const Converter = ({
   );
 };
 
-export default Converter;
+export default Converters;

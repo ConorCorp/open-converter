@@ -1,24 +1,31 @@
 import { Container } from "@mui/material";
 import { redirect, useLoaderData } from "react-router-dom";
-import { ConverterUrls } from "src/services/converter";
-import ConverterPage from "../components/homePage/converterPage";
+import { ConverterAlgos } from "src/services/converters";
+import ConverterPage from "src/presentation/components/homePage/converterPage";
 
-// How to use loaders
-// 1. Create a loader function that would pull the data required to render page.
-// 2. Add that loader to its router element
-// 3. Call useLoaderData() to access params
-export async function converterSelectionLoader({ params }: { params: any }) {
-  return Object.keys(ConverterUrls).includes(params.converterUrl)
-    ? params.converterUrl
-    : redirect(`/${ConverterUrls.JsonCsv.url}`);
+/**
+ * Takes the url params provided and decides what converter to show.
+ * @param params url params containing params.converterUrl
+ */
+export async function converterUrlLoader({ params }: { params: any }) {
+  if (Object.keys(ConverterAlgos).includes(params.converterUrl)) {
+    // Defined Routers
+    return params.converterUrl;
+  } else if (params.converterUrl === undefined) {
+    // Home Route
+    return redirect(`/${ConverterAlgos.JsonCsv.url}`);
+  } else {
+    // 404'd routes
+    throw new Response("Not Found", { status: 404 });
+  }
 }
 
 export default function Root() {
-  const converterUrl = useLoaderData();
+  const converterUrl = useLoaderData() as string;
 
   return (
     <Container>
-      <ConverterPage converter={ConverterUrls[converterUrl]} />
+      <ConverterPage converterAlgo={ConverterAlgos[converterUrl]} />
     </Container>
   );
 }

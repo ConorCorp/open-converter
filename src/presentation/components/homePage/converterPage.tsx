@@ -1,18 +1,24 @@
 import HomePageTitle from "src/presentation/components/homePage/homePageTitle";
-import Converter from "src/presentation/components/homePage/converter";
+import Converters from "src/presentation/components/homePage/converters";
 import Benefits from "src/presentation/components/homePage/benefits";
+import { ConverterAlgo } from "src/services/converters/types";
 
-export default function ConverterPage({ converter }) {
+/**
+ * Main UI page
+ * @param converterAlgo ConverterUrl object defining input/output
+ */
+export default function ConverterPage({
+  converterAlgo,
+}: {
+  converterAlgo: ConverterAlgo;
+}) {
   return (
     <>
       <HomePageTitle
-        inputFile={converter.inputFile}
-        outputFile={converter.outputFile}
+        inputFile={converterAlgo.input.fileType}
+        outputFile={converterAlgo.output.fileType}
       />
-      <Converter
-        inputFile={converter.inputFile}
-        outputFile={converter.outputFile}
-      />
+      <Converters input={converterAlgo.input} output={converterAlgo.output} />
       <Benefits />
     </>
   );
