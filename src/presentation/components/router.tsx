@@ -11,8 +11,8 @@ const router = createBrowserRouter([
     loader: converterSelectionLoader,
     children: [
       {
-        path: ":converterName",
-        element: <ConverterPage />,
+        path: ":converterUrl",
+        element: <></>,
       },
     ],
   },

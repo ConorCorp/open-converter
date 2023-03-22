@@ -13,7 +13,11 @@ enum FileType {
 }
 
 const ConverterUrls = {
-  JsonCsv: "JsonCsv",
+  JsonCsv: {
+    url: "JsonCsv",
+    inputFile: FileType.JSON,
+    outputFile: FileType.CSV,
+  },
 };
 
 const conversionMap: { [key: string]: Converter } = {

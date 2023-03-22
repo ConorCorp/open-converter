@@ -1,5 +1,11 @@
 # Open Converter
 
+## Running
+
+```bash
+npm run dev
+```
+
 ## TODO
 
 - [] | 1 | Checkbox configuration
