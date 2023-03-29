@@ -9,25 +9,43 @@ export enum ConversionUrl {
   JsonCsv = "JsonCsv",
 }
 
+export type CheckboxConfig = { [label: string]: { defaultValue?: boolean } };
+
 export type ConverterChangableConfig = {
-  checkboxes?: { [label: string]: { defaultValue?: boolean } };
+  /**
+   * Checkboxes available for an input or output file.
+   *
+   * Ex.
+   * checkboxes: { inputStartsTrue: { defaultValue: true } }
+   *
+   * This shows a single checkbox labelled `inputStartsTrue` with a default value of enabled.
+   */
+  checkboxes?: CheckboxConfig;
+  /**
+   * Numbered text inputs available for an input or output file.
+   *
+   * Ex.
+   * numberedInputs: { input0to5: { defaultValue: 0, minValue: 0, maxValue: 5 } }
+   *
+   * This shows a single numbered input labelled `input0to5` with a default value of 0, and values allowed >= 0 & < 5.
+   */
   numberInputs?: {
     [label: string]: {
       defaultValue?: number;
-      minNumber?: number;
-      maxNumber?: number;
+      minValue?: number;
+      maxValue?: number;
     };
   };
 };
 
 export type ConverterConfig = {
-  fileType: FileType;
-  textBoxPlaceholder: string;
-  config?: ConverterChangableConfig;
+  fileType: FileType; // Name of filetype
+  textBoxPlaceholder: string; // Multiline string sample placeholder text of an example file
+  config?: ConverterChangableConfig; // Configuration applied input or output
 };
 
 export type ConverterAlgo = {
-  url: string;
-  input: ConverterConfig;
-  output: ConverterConfig;
+  url: string; // Url of this algorithm
+  input: ConverterConfig; // Input file configuration
+  output: ConverterConfig; // Output (converted) file configuration
 };

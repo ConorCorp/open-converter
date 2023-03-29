@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import { redirect, useLoaderData } from "react-router-dom";
 import { ConverterAlgos } from "src/services/converters";
-import ConverterPage from "src/presentation/components/homePage/converterPage";
+import ConverterPage from "src/presentation/components/mainPage/mainPage";
 
 /**
  * Takes the url params provided and decides what converter to show.

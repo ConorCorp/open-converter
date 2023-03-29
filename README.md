@@ -28,3 +28,5 @@ npm run dev
 ## Less interesting features
 
 - [] API access / Adding to CI
+- URL params to set state
+- Preset configs with names

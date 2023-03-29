@@ -1,13 +1,11 @@
 import { TextField, Grid, Box, Typography } from "@mui/material";
 import { ConverterConfig } from "src/services/converters/types";
 import { useState } from "react";
-import FileConfig, { FileConfigInput } from "./fileConfig";
-import { useSearchParams } from "react-router-dom";
-
-const getBooleanConfig = () => {
-  const [searchParams] = useSearchParams();
-  return searchParams.get("input_1") === "true";
-};
+import FileConfig, {
+  FileConfigInput,
+} from "src/presentation/components/mainPage/conversionUi/fileConfig";
+// import { useSearchParams } from "react-router-dom";
+import getInitialCheckBoxState from "src/services/converters/state/getInitialCheckBoxState";
 
 /**
  * UI Element with side by side coverters
@@ -21,10 +19,12 @@ const Converters = ({
   input: ConverterConfig;
   output: ConverterConfig;
 }) => {
-  const [inputConfig, setInputConfig] = useState<any>({
-    input1: getBooleanConfig(),
-  });
-  const [searchParams, setSeachParams] = useSearchParams();
+  // TODO:
+  // const [searchParams] = useSearchParams();
+  // return searchParams.get("input_1") === "true";
+  const [inputConfig, setInputConfig] = useState<any>(
+    getInitialCheckBoxState(input.config?.checkboxes)
+  );
 
   // Numbered File Config
   // {
@@ -32,14 +32,25 @@ const Converters = ({
   //   label: "input2",
   //   onChange: handleNumberOnlyInputChange,
   // },
+
+  // TODO:
+  // 1. Decide where to put below to functions.
+  // 2. Pass in `inputConfig` & setInputConfig instead of reading
+  // 3. Make this work for numbered configs
+  /**
+   * Some gnarly JS/TS to parse an array from our configuration state.
+   * The array contains each user inputs' label/value/onChange.
+   *
+   * @returns FileConfigInput to render
+   */
   const getFileConfigs = (): FileConfigInput[] => {
-    return [
-      {
-        value: inputConfig.input1,
-        label: "input1",
+    return Object.entries(inputConfig).map((entry) => {
+      return {
+        label: entry[0],
+        value: entry[1],
         onChange: handleInputConfigChange,
-      },
-    ];
+      } as FileConfigInput;
+    });
   };
 
   const handleInputConfigChange = (
