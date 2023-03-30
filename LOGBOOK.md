@@ -2,7 +2,7 @@
 
 ## Entries
 
-### Mar 28 2023 // Dynamically reading checkbox state
+### Mar 29 2023 // Dynamically reading checkbox state
 
 1. Added a README.md for adding converters.
 
@@ -18,3 +18,13 @@
 2. Get checkboxes working for Output box as well.
 3. Rename `getInitialCheckboxState` to `getInitialConfigState`, make it work for numbered inputs too.
 4. Code JsonCsv conversion.
+
+### Mar 30 2023 // Dynamically reading checkbox state
+
+~~1. Clean up Checkbox state UI~~
+~~2. Get checkboxes working for Output box as well.~~
+
+**TODO NEXT**
+
+1. Rename `getInitialCheckboxState` to `getInitialConfigState`, make it work for numbered inputs too.
+2. Code JsonCsv conversion.

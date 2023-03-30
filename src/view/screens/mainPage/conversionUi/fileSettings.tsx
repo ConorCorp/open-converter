@@ -75,7 +75,6 @@ const _getGridInputComponents = (inputs: FileSetting[]) => {
 const FileSettings = ({ inputs }: { inputs: FileSetting[] }) => {
   return (
     <Box>
-      <FormLabel>Configuration</FormLabel>
       <Grid container spacing={1} columns={2}>
         {_getGridInputComponents(inputs)}
       </Grid>

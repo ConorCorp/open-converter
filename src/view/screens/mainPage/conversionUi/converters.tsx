@@ -79,6 +79,7 @@ const Converters = ({
               shrink: true,
             }}
             placeholder={output.textBoxPlaceholder}
+            sx={{ marginTop: 2 }}
           />
         </Grid>
         <Grid item>
