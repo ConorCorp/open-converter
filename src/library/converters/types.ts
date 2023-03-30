@@ -11,7 +11,7 @@ export enum ConversionUrl {
 
 export type CheckboxConfig = { [label: string]: { defaultValue?: boolean } };
 
-export type ConverterChangableConfig = {
+export type FileSettingsConfig = {
   /**
    * Checkboxes available for an input or output file.
    *
@@ -41,7 +41,7 @@ export type ConverterChangableConfig = {
 export type ConverterConfig = {
   fileType: FileType; // Name of filetype
   textBoxPlaceholder: string; // Multiline string sample placeholder text of an example file
-  config?: ConverterChangableConfig; // Configuration applied input or output
+  config?: FileSettingsConfig; // Configuration applied input or output
 };
 
 export type ConverterAlgo = {

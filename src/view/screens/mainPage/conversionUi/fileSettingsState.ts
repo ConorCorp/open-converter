@@ -1,24 +1,53 @@
-import { CheckboxConfig } from "src/library/converters/types";
+import { FileSettingsConfig } from "src/library/converters/types";
 import { FileSetting } from "src/view/screens/mainPage/conversionUi/fileSettings";
 
 export type CheckboxState = {
   [index: string]: boolean;
 };
 
-// TODO: Extend this for numbered configs
+export type NumberedInputState = {
+  [index: string]: {
+    value?: number;
+    minValue?: number;
+    maxValue?: number;
+  };
+};
+
+export type FileSettingsState = {
+  /**
+   * Checkboxes available for an input or output file.
+   *
+   * Ex.
+   * checkboxes: { inputStartsTrue: true }
+   *
+   * This shows a single checkbox labelled `inputStartsTrue` with a value of enabled.
+   */
+  checkboxes: CheckboxState;
+  /**
+   * Numbered text inputs available for an input or output file.
+   *
+   * Ex.
+   * numberedInputs: { input0to5: { value: 0, minValue: 0, maxValue: 5 } }
+   *
+   * This shows a single numbered input labelled `input0to5` with a value of 0, and values allowed >= 0 & < 5.
+   */
+  numberInputs: NumberedInputState;
+};
+
 /**
- * Get the inital state of the config for the checkboxes.
+ * Get the inital state of the settings to display from the converter's config
  *
  * First, setup up the correct checkboxdes and initial state.
  * @todo Next, check if there are search params provided.
  * @returns Object containing initial checkbox state.
  */
-export const getInitialCheckBoxState = (
-  checkBoxConfig: CheckboxConfig = {},
+export const getSettingsStateFromConfig = (
+  fileConfig: FileSettingsConfig = {},
   searchParams = {}
-): CheckboxState => {
-  const initialState: CheckboxState = {};
-  for (const [key, value] of Object.entries(checkBoxConfig)) {
+): FileSettingsState => {
+  const initialState: FileSettingsState = { checkboxes: {}, numberInputs: {} };
+  //TODO: Parse both checkboxes / numbered inputs.
+  for (const [key, value] of Object.entries(fileConfig)) {
     initialState[key] = value.defaultValue || false;
   }
   return initialState;
@@ -37,7 +66,7 @@ export const getInitialCheckBoxState = (
  *
  * @returns FileSettings to render
  */
-export const getFileSettings = (
+export const getFileSettingsAsArray = (
   fileSettings: CheckboxState,
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 ): FileSetting[] => {

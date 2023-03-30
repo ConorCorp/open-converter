@@ -24,6 +24,10 @@
 ~~1. Clean up Checkbox state UI~~
 ~~2. Get checkboxes working for Output box as well.~~
 
+---
+
+Started getting numbered inputs in fileSettingsState
+
 **TODO NEXT**
 
 1. Rename `getInitialCheckboxState` to `getInitialConfigState`, make it work for numbered inputs too.

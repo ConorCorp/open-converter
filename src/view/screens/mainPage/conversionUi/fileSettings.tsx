@@ -2,7 +2,6 @@ import {
   Box,
   Checkbox,
   FormControlLabel,
-  FormLabel,
   Grid,
   TextField,
 } from "@mui/material";
@@ -72,6 +71,10 @@ const _getGridInputComponents = (inputs: FileSetting[]) => {
   return newComponents;
 };
 
+/**
+ * File Settings Inputs.
+ * @param inputs List of file settings to display.
+ */
 const FileSettings = ({ inputs }: { inputs: FileSetting[] }) => {
   return (
     <Box>
