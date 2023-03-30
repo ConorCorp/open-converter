@@ -1,11 +1,11 @@
 import { TextField, Grid, Box, Typography } from "@mui/material";
-import { ConverterConfig } from "src/services/converters/types";
+import { ConverterConfig } from "src/library/converters/types";
 import { useState } from "react";
 import FileConfig, {
   FileConfigInput,
-} from "src/presentation/components/mainPage/conversionUi/fileConfig";
+} from "src/view/screens/mainPage/conversionUi/fileConfig";
 // import { useSearchParams } from "react-router-dom";
-import getInitialCheckBoxState from "src/services/converters/state/getInitialCheckBoxState";
+import getInitialCheckBoxState from "src/library/converters/inputs/getInitialCheckBoxState";
 
 /**
  * UI Element with side by side coverters

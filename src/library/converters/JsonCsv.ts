@@ -1,4 +1,4 @@
-import { ConverterAlgo, FileType } from "src/services/converters/types";
+import { ConverterAlgo, FileType } from "src/library/converters/types";
 
 const inputPlaceholder = `{
   "Level1Key": {

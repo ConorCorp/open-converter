@@ -24,9 +24,8 @@ npm run dev
 
 - [] Text Input Configurations
 - [] Presets: `[i18n] resources json -> input`
+- [] URL params to set state
 
 ## Less interesting features
 
 - [] API access / Adding to CI
-- URL params to set state
-- Preset configs with names

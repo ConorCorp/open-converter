@@ -1,4 +1,4 @@
-import { CheckboxConfig } from "src/services/converters/types";
+import { CheckboxConfig } from "src/library/converters/types";
 
 type CheckboxState = {
   [index: string]: boolean;

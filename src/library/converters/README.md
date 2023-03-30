@@ -15,6 +15,6 @@
 1. Add the name the name of your conversion to `ConversionUrl`s enum in `types.ts`.
 2. If you are adding a new `FileType` add it to the `FileType` enum in `types.ts`. You can reuse `FileType` names from here, for example, `JSON` already exists so you can use that and add you're new `FileType`.
 
-## 3. Update `index.ts`
+## 3. Update `converters.ts`
 
-1. Connect your `ConversionUrl` to your `ConverterAlgo` configuration in `index.ts` in the variable `ConverterAlgos`.
+1. Connect your `ConversionUrl` to your `ConverterAlgo` configuration in `converters.ts` in the variable `ConverterAlgos`.

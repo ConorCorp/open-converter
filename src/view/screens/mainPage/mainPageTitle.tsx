@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { FileType } from "src/services/converters/types";
+import { FileType } from "src/library/converters/types";
 
 const homepageTitle = ({
   inputFile,

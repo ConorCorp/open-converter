@@ -1,6 +1,6 @@
-import Root, { converterUrlLoader } from "src/presentation/routes/root";
+import Root, { converterUrlLoader } from "src/view/screens/root";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Error from "src/presentation/routes/error";
+import Error from "src/view/screens/error";
 
 const router = createBrowserRouter([
   {

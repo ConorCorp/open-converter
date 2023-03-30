@@ -1,7 +1,7 @@
-import HomePageTitle from "src/presentation/components/mainPage/mainPageTitle";
-import Converters from "src/presentation/components/mainPage/conversionUi/converters";
-import Benefits from "src/presentation/components/mainPage/benefits";
-import { ConverterAlgo } from "src/services/converters/types";
+import HomePageTitle from "src/view/screens/mainPage/mainPageTitle";
+import Converters from "src/view/screens/mainPage/conversionUi/converters";
+import Benefits from "src/view/screens/mainPage/benefits";
+import { ConverterAlgo } from "src/library/converters/types";
 
 /**
  * Main UI page
