@@ -8,13 +8,13 @@ import {
 } from "@mui/material";
 import React from "react";
 
-export type FileConfigInput = {
+export type FileSetting = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value: boolean | number | "";
   label: string;
 };
 
-const _getInputComponent = (input: FileConfigInput) => {
+const _getInputComponent = (input: FileSetting) => {
   if (typeof input.value === "boolean") {
     return (
       <FormControlLabel
@@ -49,7 +49,7 @@ const _getInputComponent = (input: FileConfigInput) => {
   }
 };
 
-const _getGridInputComponents = (inputs: FileConfigInput[]) => {
+const _getGridInputComponents = (inputs: FileSetting[]) => {
   const newComponents = [];
 
   for (const input of inputs) {
@@ -72,7 +72,7 @@ const _getGridInputComponents = (inputs: FileConfigInput[]) => {
   return newComponents;
 };
 
-const FileConfig = ({ inputs }: { inputs: FileConfigInput[] }) => {
+const FileSettings = ({ inputs }: { inputs: FileSetting[] }) => {
   return (
     <Box>
       <FormLabel>Configuration</FormLabel>
@@ -83,4 +83,4 @@ const FileConfig = ({ inputs }: { inputs: FileConfigInput[] }) => {
   );
 };
 
-export default FileConfig;
+export default FileSettings;
