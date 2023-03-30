@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { FileType } from "src/library/converters/types";
 
 const homepageTitle = ({
@@ -14,7 +14,11 @@ const homepageTitle = ({
         Open Converter: {inputFile} to {outputFile}
       </Typography>
       <Typography variant="subtitle1">
-        Convert your files with open sourced algorithms.
+        Convert your files smarter with
+        <Box fontWeight="fontWeightMedium" display="inline">
+          {" "}
+          reliable open source algorithms 🛠️
+        </Box>
       </Typography>
     </>
   );
