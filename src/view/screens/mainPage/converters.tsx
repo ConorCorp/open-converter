@@ -4,7 +4,7 @@ import {
   FileSettingsSections,
 } from "src/library/converters/types";
 import { useState } from "react";
-import FileSettings from "src/view/screens/mainPage/conversionUi/fileSettings";
+import FileSettings from "src/view/screens/mainPage/converterSettings/fileSettings";
 
 /**
  * UI Element with side by side coverters
@@ -35,7 +35,6 @@ const Converters = ({
       <Grid container spacing={2} columns={2}>
         {/* Input Section */}
         <Grid item xs={2} sm={1}>
-          <FileSettings configState={[inputConfig, setInputConfig]} />
           <TextField
             id="outlined-multiline-static"
             label={`${input.fileType} Input`}
@@ -46,12 +45,12 @@ const Converters = ({
               shrink: true,
             }}
             placeholder={input.textBoxPlaceholder}
-            sx={{ marginTop: 2 }}
+            sx={{ mt: 4 }}
           />
+          <FileSettings configState={[inputConfig, setInputConfig]} />
         </Grid>
         <Grid item xs={2} sm={1}>
           {/* Output Section */}
-          <FileSettings configState={[outputConfig, setOutputConfig]} />
           <TextField
             id="outlined-multiline-static"
             label={`${output.fileType} Output`}
@@ -62,8 +61,9 @@ const Converters = ({
               shrink: true,
             }}
             placeholder={output.textBoxPlaceholder}
-            sx={{ marginTop: 2 }}
+            sx={{ mt: 4 }}
           />
+          <FileSettings configState={[outputConfig, setOutputConfig]} />
         </Grid>
         <Grid item>
           <Typography>

@@ -69,7 +69,7 @@ export type FileSettingsFromConfig = FileSettingFromConfig[];
  * be shown to users in the UI.
  *
  * Ex.
- * "Section Label": new CheckboxSetting("Name")
+ * "Section Label":  [CheckboxSetting("Name")]
  *
  * This shows a single numbered input labelled `input0to5` with a default value of 0, and values allowed >= 0 & < 5.
  */

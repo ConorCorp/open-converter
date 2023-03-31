@@ -7,15 +7,19 @@ import {
 } from "@mui/material";
 import React from "react";
 import {
-  FileSettingsSections,
   FileSettingsFromConfig,
   FileSettingFromConfig,
 } from "src/library/converters/types";
+import ConfigSectionTitle from "src/view/screens/mainPage/converterSettings/configSectionTitle";
 import {
-  getInputsOnChange,
+  getOnChangeForSectionsInputs,
+  ReactStatePair_FileSettingsConfig,
   SetState_FileSettingsConfig,
-} from "src/view/screens/mainPage/conversionUi/fileSettingsState";
+} from "src/view/screens/mainPage/converterSettings/fileSettingsState";
 
+/**
+ * Ge a FileSetting input.
+ */
 const _getInputComponent = (
   index: number,
   input: FileSettingFromConfig,
@@ -59,6 +63,9 @@ const _getInputComponent = (
   }
 };
 
+/**
+ * Ge all FileSetting inputs and put them in a grid.
+ */
 const _getGridInputComponents = (
   fileSettings: FileSettingsFromConfig,
   setInputState: SetState_FileSettingsConfig
@@ -85,13 +92,8 @@ const _getGridInputComponents = (
   return newComponents;
 };
 
-type ReactStatePair_FileSettingsConfig = [
-  FileSettingsSections,
-  React.Dispatch<React.SetStateAction<FileSettingsSections>>
-];
-
 /**
- * File Settings Inputs.
+ * File Settings Section. Renders each section provided <input/output>.config
  * @param configState [state, setState] react pair for file settings config.
  */
 const FileSettings = ({
@@ -99,14 +101,22 @@ const FileSettings = ({
 }: {
   configState: ReactStatePair_FileSettingsConfig;
 }) => {
+  const [configSections] = configState;
+
   return (
     <Box>
-      {/*TODO: LOOP */}
-      <Grid container spacing={1} columns={2}>
-        {_getGridInputComponents(
-          configState[0]["Configuration"],
-          getInputsOnChange(configState[0], configState[1])
-        )}
+      <Grid container spacing={0.5} columns={2}>
+        {Object.entries(configSections).map(([sectionLabel, fileSettings]) => {
+          return (
+            <>
+              <ConfigSectionTitle title={sectionLabel} />
+              {_getGridInputComponents(
+                fileSettings,
+                getOnChangeForSectionsInputs(sectionLabel, configState)
+              )}
+            </>
+          );
+        })}
       </Grid>
     </Box>
   );
