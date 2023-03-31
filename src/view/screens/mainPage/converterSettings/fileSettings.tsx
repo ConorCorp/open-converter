@@ -7,8 +7,8 @@ import {
 } from "@mui/material";
 import React from "react";
 import {
-  FileSettingsFromConfig,
   FileSettingFromConfig,
+  FileSettingsFromConfig,
 } from "src/library/converters/types";
 import ConfigSectionTitle from "src/view/screens/mainPage/converterSettings/configSectionTitle";
 import {

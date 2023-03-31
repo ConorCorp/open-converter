@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
-import { useRouteError, Link } from "react-router-dom";
-import { MapPinOff } from "lucide-react";
 import { useTheme } from "@mui/material/styles";
+import { MapPinOff } from "lucide-react";
+import { Link, useRouteError } from "react-router-dom";
 
 const Error = () => {
   const theme = useTheme();

@@ -1,5 +1,5 @@
-import { ConverterAlgo, ConversionUrl } from "src/library/converters/types";
 import JsonCsv from "src/library/converters/JsonCsv";
+import { ConversionUrl,ConverterAlgo } from "src/library/converters/types";
 
 export type ConverterAlgos = {
   [index: string]: ConverterAlgo;

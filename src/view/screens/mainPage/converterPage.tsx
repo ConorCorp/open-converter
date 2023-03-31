@@ -1,7 +1,7 @@
+import { ConverterAlgo } from "src/library/converters/types";
+import Benefits from "src/view/screens/mainPage/benefits";
 import ConverterPageTitle from "src/view/screens/mainPage/converterPageTitle";
 import Converters from "src/view/screens/mainPage/converters";
-import Benefits from "src/view/screens/mainPage/benefits";
-import { ConverterAlgo } from "src/library/converters/types";
 
 /**
  * Main UI page

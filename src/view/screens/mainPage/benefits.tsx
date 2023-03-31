@@ -1,4 +1,4 @@
-import { Typography, Grid, Box } from "@mui/material";
+import { Box,Grid, Typography } from "@mui/material";
 
 const Benefits = () => {
   return (

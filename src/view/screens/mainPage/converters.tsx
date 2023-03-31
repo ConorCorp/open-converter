@@ -1,9 +1,9 @@
-import { TextField, Grid, Box, Typography } from "@mui/material";
+import { Box, Grid, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 import {
   ConverterConfig,
   FileSettingsSections,
 } from "src/library/converters/types";
-import { useState } from "react";
 import FileSettings from "src/view/screens/mainPage/converterSettings/fileSettings";
 
 /**

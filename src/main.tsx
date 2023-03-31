@@ -1,10 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
 import { ThemeProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
-import theme from "src/view/theme";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import Router from "src/view/screens/router";
+import theme from "src/view/theme";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
