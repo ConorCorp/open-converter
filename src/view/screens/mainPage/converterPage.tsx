@@ -1,4 +1,4 @@
-import HomePageTitle from "src/view/screens/mainPage/mainPageTitle";
+import ConverterPageTitle from "src/view/screens/mainPage/converterPageTitle";
 import Converters from "src/view/screens/mainPage/conversionUi/converters";
 import Benefits from "src/view/screens/mainPage/benefits";
 import { ConverterAlgo } from "src/library/converters/types";
@@ -14,7 +14,7 @@ export default function ConverterPage({
 }) {
   return (
     <>
-      <HomePageTitle
+      <ConverterPageTitle
         inputFile={converterAlgo.input.fileType}
         outputFile={converterAlgo.output.fileType}
       />

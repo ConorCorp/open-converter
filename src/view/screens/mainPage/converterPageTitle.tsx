@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { FileType } from "src/library/converters/types";
 
-const homepageTitle = ({
+const ConverterPageTitle = ({
   inputFile,
   outputFile,
 }: {
@@ -24,4 +24,4 @@ const homepageTitle = ({
   );
 };
 
-export default homepageTitle;
+export default ConverterPageTitle;

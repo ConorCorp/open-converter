@@ -1,14 +1,10 @@
 import { TextField, Grid, Box, Typography } from "@mui/material";
-import { ConverterConfig } from "src/library/converters/types";
+import {
+  ConverterConfig,
+  FileSettingsSections,
+} from "src/library/converters/types";
 import { useState } from "react";
 import FileSettings from "src/view/screens/mainPage/conversionUi/fileSettings";
-import {
-  getSettingsStateFromConfig,
-  getFileSettingsAsArray,
-  getHandleConfigChange,
-  CheckboxState,
-  FileSettingsState,
-} from "src/view/screens/mainPage/conversionUi/fileSettingsState";
 
 /**
  * UI Element with side by side coverters
@@ -22,11 +18,11 @@ const Converters = ({
   input: ConverterConfig;
   output: ConverterConfig;
 }) => {
-  const [inputConfig, setInputConfig] = useState<FileSettingsState>(
-    getSettingsStateFromConfig(input.config)
+  const [inputConfig, setInputConfig] = useState<FileSettingsSections>(
+    input.config || {}
   );
-  const [outputConfig, setOutputConfig] = useState<FileSettingsState>(
-    getSettingsStateFromConfig(output.config)
+  const [outputConfig, setOutputConfig] = useState<FileSettingsSections>(
+    output.config || {}
   );
 
   return (
@@ -39,12 +35,7 @@ const Converters = ({
       <Grid container spacing={2} columns={2}>
         {/* Input Section */}
         <Grid item xs={2} sm={1}>
-          <FileSettings
-            inputs={getFileSettingsAsArray(
-              inputConfig,
-              getHandleConfigChange(inputConfig, setInputConfig)
-            )}
-          />
+          <FileSettings configState={[inputConfig, setInputConfig]} />
           <TextField
             id="outlined-multiline-static"
             label={`${input.fileType} Input`}
@@ -60,12 +51,7 @@ const Converters = ({
         </Grid>
         <Grid item xs={2} sm={1}>
           {/* Output Section */}
-          <FileSettings
-            inputs={getFileSettingsAsArray(
-              outputConfig,
-              getHandleConfigChange(outputConfig, setOutputConfig)
-            )}
-          />
+          <FileSettings configState={[outputConfig, setOutputConfig]} />
           <TextField
             id="outlined-multiline-static"
             label={`${output.fileType} Output`}

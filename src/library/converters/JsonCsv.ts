@@ -1,4 +1,9 @@
-import { ConverterAlgo, FileType } from "src/library/converters/types";
+import {
+  CheckboxSetting,
+  ConverterAlgo,
+  FileType,
+  NumberInputSetting,
+} from "src/library/converters/types";
 
 const inputPlaceholder = `{
   "Level1Key": {
@@ -20,30 +25,24 @@ const JsonCsv: ConverterAlgo = {
     fileType: FileType.JSON,
     textBoxPlaceholder: inputPlaceholder,
     config: {
-      checkboxes: {
-        inputStartsFalse: {},
-        inputStartsTrue: { defaultValue: true },
-      },
-      numberInputs: {
-        inputForNumbers: {
-          defaultValue: 2,
-        },
-      },
+      Configuration: [
+        new CheckboxSetting("inputStartsFalse"),
+        new CheckboxSetting("inputStartsTrue", true),
+        new NumberInputSetting("inputForNumbers", 2),
+        new NumberInputSetting("inputBetween0-1", 0, 0, 1),
+      ],
     },
   },
   output: {
     fileType: FileType.CSV,
     textBoxPlaceholder: outputPlaceholder,
     config: {
-      checkboxes: {
-        outputStartsFalse: {},
-        outputStartsTrue: { defaultValue: true },
-      },
-      numberInputs: {
-        outputForNumbers: {
-          defaultValue: 2,
-        },
-      },
+      Configuration: [
+        new CheckboxSetting("outputStartsFalse"),
+        new CheckboxSetting("outputStartsTrue", true),
+        new NumberInputSetting("outputForNumbers", 2),
+        new NumberInputSetting("outputBetween0-1", 0, 0, 1),
+      ],
     },
   },
 };

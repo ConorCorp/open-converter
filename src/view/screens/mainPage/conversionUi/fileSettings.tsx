@@ -6,21 +6,30 @@ import {
   TextField,
 } from "@mui/material";
 import React from "react";
+import {
+  FileSettingsSections,
+  FileSettingsFromConfig,
+  FileSettingFromConfig,
+} from "src/library/converters/types";
+import {
+  getInputsOnChange,
+  SetState_FileSettingsConfig,
+} from "src/view/screens/mainPage/conversionUi/fileSettingsState";
 
-export type FileSetting = {
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  value: boolean | number | "";
-  label: string;
-};
-
-const _getInputComponent = (input: FileSetting) => {
+const _getInputComponent = (
+  index: number,
+  input: FileSettingFromConfig,
+  setInputState: SetState_FileSettingsConfig
+) => {
   if (typeof input.value === "boolean") {
     return (
       <FormControlLabel
         control={
           <Checkbox
             checked={input.value}
-            onChange={input.onChange}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              setInputState(index, event.target.checked)
+            }
             name={input.label}
           />
         }
@@ -32,14 +41,16 @@ const _getInputComponent = (input: FileSetting) => {
       <TextField
         size="small"
         variant="filled"
-        inputProps={
-          typeof input.value === "number"
-            ? { inputMode: "numeric", pattern: "[0-9]*" }
-            : { inputMode: "text" }
-        }
         label={input.label}
         value={input.value}
-        onChange={input.onChange}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          if (Number.isInteger(+event.target.value)) {
+            setInputState(index, Number(event.target.value));
+          }
+          if (event.target.value === "") {
+            setInputState(index, event.target.value);
+          }
+        }}
         name={input.label}
       />
     );
@@ -48,13 +59,16 @@ const _getInputComponent = (input: FileSetting) => {
   }
 };
 
-const _getGridInputComponents = (inputs: FileSetting[]) => {
+const _getGridInputComponents = (
+  fileSettings: FileSettingsFromConfig,
+  setInputState: SetState_FileSettingsConfig
+) => {
   const newComponents = [];
 
-  for (const input of inputs) {
+  for (const [index, fileSetting] of fileSettings.entries()) {
     newComponents.push(
       <Grid
-        key={input.label}
+        key={fileSetting.label}
         item
         xs={2}
         sm={1}
@@ -63,7 +77,7 @@ const _getGridInputComponents = (inputs: FileSetting[]) => {
           alignItems: "center",
         }}
       >
-        {_getInputComponent(input)}
+        {_getInputComponent(index, fileSetting, setInputState)}
       </Grid>
     );
   }
@@ -71,15 +85,28 @@ const _getGridInputComponents = (inputs: FileSetting[]) => {
   return newComponents;
 };
 
+type ReactStatePair_FileSettingsConfig = [
+  FileSettingsSections,
+  React.Dispatch<React.SetStateAction<FileSettingsSections>>
+];
+
 /**
  * File Settings Inputs.
- * @param inputs List of file settings to display.
+ * @param configState [state, setState] react pair for file settings config.
  */
-const FileSettings = ({ inputs }: { inputs: FileSetting[] }) => {
+const FileSettings = ({
+  configState,
+}: {
+  configState: ReactStatePair_FileSettingsConfig;
+}) => {
   return (
     <Box>
+      {/*TODO: LOOP */}
       <Grid container spacing={1} columns={2}>
-        {_getGridInputComponents(inputs)}
+        {_getGridInputComponents(
+          configState[0]["Configuration"],
+          getInputsOnChange(configState[0], configState[1])
+        )}
       </Grid>
     </Box>
   );
